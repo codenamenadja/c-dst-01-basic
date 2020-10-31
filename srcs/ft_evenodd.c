@@ -6,7 +6,7 @@
 /*   By: jihhan <junehan.dev@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 12:41:02 by jihhan            #+#    #+#             */
-/*   Updated: 2020/10/31 12:47:28 by jihhan           ###   ########.fr       */
+/*   Updated: 2020/10/31 12:54:08 by jihhan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,12 @@ unsigned int **ft_evenodd(int *arr, int len)
             ((**pt + *(arr + i)) > UINT_MAX) || 
             ((**(pt + 1) + *(arr + i)) > UINT_MAX)
             )
-            return (pt);
+        {
+            free(*pt);
+            free(*(pt+1));
+            free(pt);
+            return (NULL);
+        }
         if (ft_iseven(*(arr + i)) > 0)
             **pt += *(arr + i);
         else 

@@ -1,10 +1,10 @@
 DST in C
 ========
 
-01-1 FIND_MAX
+01 FIND_MAX
 -------------
 
-``find_max(arr, n)``
+``ft_find_max(arr, n)``
 
 - DESC::
 
@@ -19,15 +19,14 @@ DST in C
    n
       number of integer elements in ``arr``
 
-- returns::
+- RETURNS::
 
    an integer, maximum value in ``arr``
 
-01-2 ``evenodd_sum(arr, n)``
+02 EVENODD
 ----------------------------
 
-``ft_intmapi(int *arr, int len, char (*f)(unsigend int, char))``
-``get_evens(arr, n)``
+``ft_evenodd(int *arr, int len)``
 
 - DESC::
 
@@ -42,6 +41,14 @@ DST in C
    n
       number of integer elements in ``arr``
 
-- returns::
+- RETURNS::
 
-   an integer, maximum value in ``arr``
+   double pointer, storing ``unsigned int *`` summation of evens, odds and NULL.
+   NULL, malloc erorr or range error.
+
+- ERROR::
+
+   - malloc error
+   - summation range overflow
+      
+
