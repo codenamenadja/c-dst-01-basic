@@ -1,10 +1,11 @@
 CC					= gcc
-CFLAGS				= -Wall -Werror -Wextra -c
+CFLAGS				= -Wall -Werror -Wextra -Iincludes -c
 .DEFALT_GOAL		:= all
 NAME				= dst_basic.a
 
 SOURCES				= $(wildcard srcs/ft_*.c)
 HEADERS				= $(wildcard includes/*.h)
+
 OBJECTS				= $(patsubst %.c, %.o, $(SOURCES))
 TESTS				= $(wildcard tests/srcs/*.c)
 
@@ -17,7 +18,7 @@ $(NAME): $(OBJECTS)
 
 .PHONY: test
 test: $(TESTS)
-	$(CC) -Werror -Wextra -Wall -Iincludes tests/tests.c $^ $(NAME) -o tests/test.out
+	$(CC) -Wall -Werror -Wextra -Iincludes tests/tests.c $(NAME) includes/libft_ctype.a -o tests/test.out
 	./tests/test.out
 	/bin/rm -f tests/test.out
 
