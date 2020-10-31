@@ -2,9 +2,9 @@ DST in C
 ========
 
 01 FIND_MAX
--------------
+-----------
 
-``ft_find_max(arr, n)``
+``unsigned int ft_find_max(int *arr, int n)``
 
 - DESC::
 
@@ -21,12 +21,12 @@ DST in C
 
 - RETURNS::
 
-   an integer, maximum value in ``arr``
+   an unsigned integer, maximum value in ``arr``
 
 02 EVENODD
-----------------------------
+----------
 
-``ft_evenodd(int *arr, int len)``
+``unsigned int **ft_evenodd(int *arr, int len)``
 
 - DESC::
 
@@ -50,5 +50,25 @@ DST in C
 
    - malloc error
    - summation range overflow
-      
 
+03 FIND_MAX_MATRIX
+------------------
+
+``unsigned int ft_find_max_matrix(unsigned int **arr, int n)``
+
+- DESC::
+
+   When number of n-counts of integer values in 2-dimensions provided,
+   write code that finds most biggest one by n-size of arr.
+
+- PARAMS::
+
+   arr
+      n-count of unsigned integer pointer storing array
+
+   n
+      number of integer elements in ``arr``
+
+- RETURNS::
+
+   an unsigend integer, maximum value in ``arr``

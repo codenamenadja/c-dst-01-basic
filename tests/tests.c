@@ -7,6 +7,7 @@
 
 int test_ft_find_max();
 int test_ft_evenodds();
+int test_ft_find_max_m(); 
 
 int main()
 {
@@ -16,14 +17,68 @@ int main()
     failures = 0;
     successes = 0;
     debug("TEST START-------------");
+    debug("----");
     test_ft_find_max() ? failures++ : successes++;
     debug("tests %d, success: %d, failures: %d.",
         failures+successes, successes, failures);
+    debug("----");
     test_ft_evenodds() ? failures++ : successes++;
+    debug("tests %d, success: %d, failures: %d.",
+        failures+successes, successes, failures);
+    debug("----");
+    test_ft_find_max_m() ? failures++ : successes++;
     debug("tests %d, success: %d, failures: %d.",
         failures+successes, successes, failures);
     debug("TEST FIN-------------");
 }
+
+int test_ft_find_max_m()
+{
+    unsigned int    **arr;
+    int             len = 10;
+    unsigned int    ret;
+    int             i;
+
+    debug("----RUN: test_ft_find_max_m:ft_find_max_matrix----");
+    i = -1;
+    arr = (unsigned int **)calloc(10, sizeof(int *));
+    while (++i < len)
+       *(arr + i) = (unsigned int *)calloc(10, sizeof(int));
+
+    ret = ft_find_max_matrix(arr, len);
+    debug("expected:%u ret:%u", 0, ret);
+    check(ret == 0,
+        "expection error"
+    );
+
+    *(*(arr + 9) + 2) = 4444;
+
+    ret = ft_find_max_matrix(arr, len);
+    debug("expected:%u ret:%u", 4444, ret);
+    check(ret == 4444,
+        "expection error"
+    );
+    
+    debug("----FIN: test_ft_find_max_m:ft_find_max_matrix----");
+
+    i = -1;
+    while (++i < len)
+       free(*(arr + i));
+    free(arr); 
+
+    return (EXIT_SUCCESS);
+
+error:
+    debug("----ERR: test_ft_find_max_m:ft_find_max_matrix----");
+    i = -1;
+
+    while (++i < len)
+       free(*(arr + i));
+    free(arr); 
+
+    return (EXIT_FAILURE);
+}
+
 
 int test_ft_evenodds()
 {
@@ -49,7 +104,7 @@ int test_ft_evenodds()
     free(*(ret+1));
     free(ret);
 
-    return (0);
+    return (EXIT_SUCCESS);
 
 error:
     debug("%p: %p-%p-%p", ret, *ret, *(ret + 1), *(ret + 2));
@@ -59,15 +114,15 @@ error:
     free(*(ret+1));
     free(ret);
 
-    return (1);
+    return (EXIT_FAILURE);
 }
 
 int test_ft_find_max()
 {
-    int     max;
-    int     ret;
-    int     arr[16];
-    int     n;
+    unsigned int    max;
+    unsigned int    ret;
+    unsigned int    arr[16];
+    int             n;
 
     max = INT_MAX;
     arr[13] = max;
